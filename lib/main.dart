@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaboo_app/screens/main_screens/main_screen.dart';
 import 'package:kaboo_app/screens/splash_screen.dart';
 
 void main() {
@@ -16,8 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
-      //home: const MainScreen(),
+      //home: const SplashScreen(),
+      home: const MainScreen(),
     );
   }
 }
