@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CustomIcon extends StatelessWidget {
-  const CustomIcon({
+class CustomImage extends StatelessWidget {
+  const CustomImage({
     Key? key,
-    required this.iconName,
+    required this.name,
   }) : super(key: key);
+  final String name;
 
-  final String iconName;
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      "assets/icons/$iconName",
+      "assets/images/$name",
       fit: BoxFit.cover,
     );
   }
