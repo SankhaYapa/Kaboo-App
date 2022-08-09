@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:kaboo_app/compononets/custom_svg.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
@@ -22,65 +23,116 @@ class _MainScreenState extends State<MainScreen> {
     const MapScreen(),
     const ProfileScreen(),
   ];
+  Future<bool> initBackButton() async {
+    return await showDialog(
+          context: context,
+          builder: (context) => ElasticIn(
+              child: AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+              10,
+            )),
+            title: const CustomText(
+              text: "ExitApp",
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            content: Builder(
+              builder: (context) {
+                return const SizedBox(
+                  height: 70,
+                  width: 200,
+                  child: CustomText(text: "Do you really want to exit an app?"),
+                );
+              },
+            ),
+            actions: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
+                ),
+                onPressed: () => Navigator.of(context).pop(true),
+                child: const CustomText(
+                  text: "Yes",
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                ),
+                child: const CustomText(
+                  text: "No",
+                ),
+              ),
+            ],
+          )),
+        ) ??
+        false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _screens.elementAt(_currentIndex),
-      bottomNavigationBar: Container(
-        height: 70,
-        color: Colors.white,
-        child: Column(
-          children: [
-            const Divider(
-              height: 1,
-              color: kgrayDark2,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                BottomNavTile(
-                  text: "Home",
-                  icon: "Home.svg",
-                  isSelected: _currentIndex == 0,
-                  ontap: () {
-                    setState(() {
-                      _currentIndex = 0;
-                    });
-                  },
-                ),
-                BottomNavTile(
-                  text: "Calender",
-                  icon: "calender.svg",
-                  isSelected: _currentIndex == 1,
-                  ontap: () {
-                    setState(() {
-                      _currentIndex = 1;
-                    });
-                  },
-                ),
-                BottomNavTile(
-                  text: "Map",
-                  icon: "map.svg",
-                  isSelected: _currentIndex == 2,
-                  ontap: () {
-                    setState(() {
-                      _currentIndex = 2;
-                    });
-                  },
-                ),
-                BottomNavTile(
-                  text: "Profile",
-                  icon: "profile.svg",
-                  isSelected: _currentIndex == 3,
-                  ontap: () {
-                    setState(() {
-                      _currentIndex = 3;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ],
+    return WillPopScope(
+      onWillPop: initBackButton,
+      child: Scaffold(
+        body: _screens.elementAt(_currentIndex),
+        bottomNavigationBar: Container(
+          height: 70,
+          color: Colors.white,
+          child: Column(
+            children: [
+              const Divider(
+                height: 1,
+                color: kgrayDark2,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  BottomNavTile(
+                    text: "Home",
+                    icon: "Home.svg",
+                    isSelected: _currentIndex == 0,
+                    ontap: () {
+                      setState(() {
+                        _currentIndex = 0;
+                      });
+                    },
+                  ),
+                  BottomNavTile(
+                    text: "Calender",
+                    icon: "calender.svg",
+                    isSelected: _currentIndex == 1,
+                    ontap: () {
+                      setState(() {
+                        _currentIndex = 1;
+                      });
+                    },
+                  ),
+                  BottomNavTile(
+                    text: "Map",
+                    icon: "map.svg",
+                    isSelected: _currentIndex == 2,
+                    ontap: () {
+                      setState(() {
+                        _currentIndex = 2;
+                      });
+                    },
+                  ),
+                  BottomNavTile(
+                    text: "Profile",
+                    icon: "profile.svg",
+                    isSelected: _currentIndex == 3,
+                    ontap: () {
+                      setState(() {
+                        _currentIndex = 3;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
