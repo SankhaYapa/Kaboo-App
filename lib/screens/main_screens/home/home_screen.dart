@@ -2,12 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:kaboo_app/compononets/custom_gradint_tile.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
+
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/accomandation_screen.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/contactus_screen.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/create_journey_screen.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/explore_environment_screen.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/finds_job_screen.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/your_network_screen.dart';
 import 'package:kaboo_app/utils/app_colors.dart';
 import 'package:kaboo_app/utils/util_functions.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,52 +42,78 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class TileList extends StatelessWidget {
+class TileList extends StatefulWidget {
   const TileList({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<TileList> createState() => _TileListState();
+}
+
+class _TileListState extends State<TileList> {
+  @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
+      children: [
         CustomGradientTile(
+          onTap: () {
+            UtilFunctions.navigator(context, CreateJourneyScreen());
+          },
           name: "Create a new journey",
           icon: "newJourney.png",
           color1: kgradiantTileBlue1,
           color2: Colors.white,
         ),
         CustomGradientTile(
+          onTap: () {
+            UtilFunctions.navigator(context, ExploreEnvironmentScreen());
+          },
           name: "Your Journey",
           icon: "yourJourney.png",
           color1: kgradiantTileBlue1,
           color2: Colors.white,
         ),
         CustomGradientTile(
+          onTap: () {
+            UtilFunctions.navigator(context, ExploreEnvironmentScreen());
+          },
           name: "Explore your environment",
           icon: "environment.png",
           color1: kgradiantTileRed1,
           color2: Colors.white,
         ),
         CustomGradientTile(
+          onTap: () {
+            UtilFunctions.navigator(context, AccomandationScreen());
+          },
           name: "Find an accommodation",
           icon: "accomodation.png",
           color1: kgradiantTileRed1,
           color2: Colors.white,
         ),
         CustomGradientTile(
+          onTap: () {
+            UtilFunctions.navigator(context, FindsJobScreen());
+          },
           name: "Find Jobs",
           icon: "findJobs.png",
           color1: kgradiantTileBlue1,
           color2: Colors.white,
         ),
         CustomGradientTile(
+          onTap: () {
+            UtilFunctions.navigator(context, YourNetWorkScreen());
+          },
           name: "Your Network",
           icon: "yourNetwork.png",
           color1: kgradiantTileRed1,
           color2: Colors.white,
         ),
         CustomGradientTile(
+          onTap: () {
+            UtilFunctions.navigator(context, ContactUsScreen());
+          },
           name: "Contact Us",
           icon: "contactUs.png",
           color1: kgradiantTileRed1,

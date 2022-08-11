@@ -3,7 +3,7 @@ import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
 
 class CustomGradientTile extends StatelessWidget {
-  const CustomGradientTile({
+  CustomGradientTile({
     Key? key,
     required this.name,
     required this.icon,
@@ -11,13 +11,15 @@ class CustomGradientTile extends StatelessWidget {
     required this.color2,
     this.start = Alignment.topCenter,
     this.end = Alignment.bottomCenter,
+    required this.onTap,
   }) : super(key: key);
   final String name;
-  final String icon;
+  String icon;
   final Color color1;
   final Color color2;
   final AlignmentGeometry start;
   final AlignmentGeometry end;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,30 +30,33 @@ class CustomGradientTile extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.bottomCenter,
-            child: Card(
-              elevation: 6,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                height: 58,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  gradient: LinearGradient(
-                    colors: [
-                      color1,
-                      color2,
-                    ],
-                    begin: start,
-                    end: end,
+            child: GestureDetector(
+              onTap: onTap,
+              child: Card(
+                elevation: 6,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  height: 58,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    gradient: LinearGradient(
+                      colors: [
+                        color1,
+                        color2,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                   ),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: CustomText(
+                        text: name,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      )),
                 ),
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: CustomText(
-                      text: name,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    )),
               ),
             ),
           ),
