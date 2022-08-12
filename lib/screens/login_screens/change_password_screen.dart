@@ -30,16 +30,27 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             SizedBox(
               height: 20,
             ),
-            CustomTextField(hint: 'Current Password', name: 'Current Password'),
-            SizedBox(
-              height: 10,
+            CustomTextField(
+              hint: 'Current Password',
+              name: 'Current Password',
+              controller: TextEditingController(),
             ),
-            CustomTextField(hint: 'New Password', name: 'New Password'),
             SizedBox(
               height: 10,
             ),
             CustomTextField(
-                hint: 'Re-Enter New Password', name: 'Re-Enter New Password'),
+              hint: 'New Password',
+              name: 'New Password',
+              controller: TextEditingController(),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomTextField(
+              hint: 'Re-Enter New Password',
+              name: 'Re-Enter New Password',
+              controller: TextEditingController(),
+            ),
           ],
         ),
       ),
