@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673163110099",
+    "project_id": "kaboo-app-595c1",
+    "storage_bucket": "kaboo-app-595c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673163110099:android:7da61c1684a555220a5626",
+        "android_client_info": {
+          "package_name": "com.example.kaboo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673163110099-mlok0a4m7gaol0r0f600r60m9go41nlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN9ohkg5rGAoi4LgHUQ6ue4xPKG9gkeAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673163110099-mlok0a4m7gaol0r0f600r60m9go41nlf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

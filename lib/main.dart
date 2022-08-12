@@ -1,11 +1,29 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kaboo_app/providers/login_provider.dart';
+import 'package:kaboo_app/providers/registration_provider.dart';
 
 import 'package:kaboo_app/screens/main_screens/home/home_screen.dart';
 import 'package:kaboo_app/screens/main_screens/main_screen.dart';
 import 'package:kaboo_app/screens/splash_screen.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => RegistrationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LoginProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
