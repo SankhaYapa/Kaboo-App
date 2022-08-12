@@ -65,11 +65,19 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               child: Form(
                 child: Column(
                   children: [
-                    CustomTextField(hint: 'Full Name', name: 'Full Name'),
+                    CustomTextField(
+                      hint: 'Full Name',
+                      name: 'Full Name',
+                      controller: TextEditingController(),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
-                    CustomTextField(hint: 'Email', name: 'Email'),
+                    CustomTextField(
+                      hint: 'Email',
+                      name: 'Email',
+                      controller: TextEditingController(),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
@@ -81,7 +89,11 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    CustomTextField(hint: 'Subject', name: 'Subject'),
+                    CustomTextField(
+                      hint: 'Subject',
+                      name: 'Subject',
+                      controller: TextEditingController(),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
