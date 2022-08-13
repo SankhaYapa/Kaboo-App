@@ -37,9 +37,7 @@ dependencies:
   flutter_svg: ^0.23.0+1
   animate_do: ^2.0.0
   awesome_dialog: ^2.1.1
-<<<<<<< HEAD
   table_calendar: ^3.0.6
-=======
   firebase_core: "^1.6.0"
   firebase_auth: "^3.1.1"
   logger: ^1.1.0
@@ -47,7 +45,6 @@ dependencies:
   google_fonts: ^2.1.0
   email_validator: ^2.0.1
   provider: ^5.0.0
->>>>>>> 2b76beb17b53887d2a8f87fb421126f653f1fbca
 
 dev_dependencies:
   flutter_test:
