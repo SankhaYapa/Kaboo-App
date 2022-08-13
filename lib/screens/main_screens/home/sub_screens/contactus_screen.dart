@@ -1,7 +1,9 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:kaboo_app/compononets/custom_dialog.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_image.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
@@ -122,11 +124,22 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          value.sendForm();
-                          print(value.nameController.text);
-                          print(value.emailController.text);
-                          print(value.country);
-                          print(value.messageController.text);
+                          bool send = value.sendForm();
+                          if (send) {
+                            CustomAwesomDialog().dialogBox(
+                              context,
+                              "Success",
+                              "Thank you for contact us",
+                              DialogType.SUCCES,
+                            );
+                          } else {
+                            CustomAwesomDialog().dialogBox(
+                              context,
+                              "Error",
+                              "please fill correctly",
+                              DialogType.ERROR,
+                            );
+                          }
                         },
                         child: Text("Send"),
                       ),

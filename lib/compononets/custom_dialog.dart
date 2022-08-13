@@ -4,17 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomAwesomDialog {
   Future<dynamic> dialogBox(
-    BuildContext context,
-    final _title,
-    final _desc,
-    DialogType _type,
-  ) async {
+      BuildContext context, final title, final desc, DialogType type) async {
     return AwesomeDialog(
       context: context,
-      dialogType: _type,
+      dialogType: type,
       animType: AnimType.BOTTOMSLIDE,
-      title: _title,
-      desc: _desc,
+      title: title,
+      desc: desc,
       btnOkColor: Colors.blue,
       buttonsTextStyle: GoogleFonts.poppins(
           color: Colors.red, fontSize: 15, fontWeight: FontWeight.bold),
