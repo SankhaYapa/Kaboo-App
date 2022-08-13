@@ -18,6 +18,9 @@ class _CreateJourneyScreenState extends State<CreateJourneyScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
         centerTitle: true,
         title: Text(
           'Create your journey ',

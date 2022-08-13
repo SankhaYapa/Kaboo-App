@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_image.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class YourNetWorkScreen extends StatefulWidget {
   const YourNetWorkScreen({Key? key}) : super(key: key);
@@ -20,6 +21,9 @@ class _YourNetWorkScreenState extends State<YourNetWorkScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
+          ),
           centerTitle: true,
           title: Text(
             'Your Network',
@@ -32,21 +36,27 @@ class _YourNetWorkScreenState extends State<YourNetWorkScreen> {
               name: 'yournetwork.png',
             ),
             YourNetWorkList(
+              onTap: () {},
               size: size,
               icon: "bookmark.png",
               text: 'Bookmarks',
             ),
             YourNetWorkList(
+              onTap: () {},
               size: size,
               icon: "chat.png",
               text: 'Chat',
             ),
             YourNetWorkList(
+              onTap: () async {
+                launch("tel://21213123123");
+              },
               size: size,
               icon: "call.png",
               text: 'Call',
             ),
             YourNetWorkList(
+              onTap: () {},
               size: size,
               icon: "map.png",
               text: 'Your Map',
@@ -62,57 +72,63 @@ class YourNetWorkList extends StatelessWidget {
     required this.size,
     required this.icon,
     required this.text,
+    required this.onTap,
   }) : super(key: key);
 
   final Size size;
   final String icon;
   final String text;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Stack(alignment: Alignment.center, children: [
-          Container(
-            // color: Colors.black12,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color.fromARGB(255, 241, 214, 234),
-                    Color.fromARGB(255, 237, 123, 221)
-                  ]),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black54,
-                  spreadRadius: 0.2,
-                  blurRadius: 2,
-                  offset: Offset(0, 2),
-                )
-              ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Stack(alignment: Alignment.center, children: [
+            Container(
+              // color: Colors.black12,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color.fromARGB(255, 241, 214, 234),
+                      Color.fromARGB(255, 237, 123, 221)
+                    ]),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black54,
+                    spreadRadius: 0.2,
+                    blurRadius: 2,
+                    offset: Offset(0, 2),
+                  )
+                ],
+              ),
+              width: size.width,
+              height: 58,
             ),
-            width: size.width,
-            height: 58,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomText(
-                  text: text,
-                  fontSize: 18,
-                ),
-                CustomIcon(iconName: icon)
-              ],
-            ),
-          )
-        ]));
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(
+                    text: text,
+                    fontSize: 18,
+                  ),
+                  // IconButton(onPressed: , icon: icon)
+                  CustomIcon(iconName: icon)
+                ],
+              ),
+            )
+          ])),
+    );
   }
 }

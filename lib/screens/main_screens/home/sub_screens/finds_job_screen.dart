@@ -20,6 +20,9 @@ class _FindsJobScreenState extends State<FindsJobScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
+          ),
           centerTitle: true,
           title: Text(
             'Find Jobs',

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:kaboo_app/model/user_model.dart';
 import 'package:logger/logger.dart';
 
 class DatabaseController {
@@ -40,30 +40,31 @@ class DatabaseController {
         .catchError((error) => print("Failed to merge data: $error"));
   }
 
-  //update user address
-  // Future<void> updateAddress(UserModel user) async {
-  //   return users
-  //       .doc(user.uid)
-  //       .set(
-  //         user.toJson(),
-  //       )
-  //       .then((value) => print("address update sussessful!"))
-  //       .catchError((error) => print("Failed to update: $error"));
-  // }
+  // update user user details
+  Future<void> updateUser(UserModel user) async {
+    return users
+        .doc(user.uid)
+        .set(
+          user.toJson(),
+        )
+        .then((value) => print("user update sussessful!"))
+        .catchError((error) => print("Failed to update: $error"));
+  }
 
   //getUser data
-  // Future<UserModel?> getUserData(String id) async {
-  //   try {
-  //     DocumentSnapshot snapshot = await users.doc(id).get();
-  //     Logger().i(snapshot.data());
+  Future<UserModel?> getUserData(String id) async {
+    try {
+      DocumentSnapshot snapshot = await users.doc(id).get();
+      Logger().i(snapshot.data());
 
-  //     UserModel userModel =
-  //         UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
-
-  //     //Logger().d(userModel.toString());
-  //     return userModel;
-  //   } catch (e) {
-  //     Logger().e(e);
-  //   }
-  // }
+      // UserModel userModel =
+      //     UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
+      UserModel userModel =
+          UserModel.fromMap(snapshot.data() as Map<String, dynamic>);
+      //Logger().d(userModel.toString());
+      return userModel;
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
 }

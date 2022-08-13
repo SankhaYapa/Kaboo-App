@@ -17,6 +17,9 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(

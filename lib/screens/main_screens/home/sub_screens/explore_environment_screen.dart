@@ -19,6 +19,9 @@ class _ExploreEnvironmentScreenState extends State<ExploreEnvironmentScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
+          ),
           centerTitle: true,
           title: Text(
             'Explore your environment',

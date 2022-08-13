@@ -37,7 +37,6 @@ dependencies:
   flutter_svg: ^0.23.0+1
   animate_do: ^2.0.0
   awesome_dialog: ^2.1.1
-  table_calendar: ^3.0.6
   firebase_core: "^1.6.0"
   firebase_auth: "^3.1.1"
   logger: ^1.1.0
@@ -45,6 +44,13 @@ dependencies:
   google_fonts: ^2.1.0
   email_validator: ^2.0.1
   provider: ^5.0.0
+  table_calendar: ^3.0.6
+  google_maps_flutter: ^2.1.10
+  geolocator: ^7.0.1
+  image_picker: ^0.8.5+3
+  firebase_storage: ^10.3.0
+  url_launcher: ^6.1.5
+
 
 dev_dependencies:
   flutter_test:
