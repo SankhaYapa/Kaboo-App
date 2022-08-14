@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kaboo_app/compononets/custom_gradint_tile.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
+import 'package:kaboo_app/providers/login_provider.dart';
+import 'package:kaboo_app/providers/user_provider.dart';
 
 import 'package:kaboo_app/screens/main_screens/home/sub_screens/accomandation_screen.dart';
 import 'package:kaboo_app/screens/main_screens/home/sub_screens/contactus_screen.dart';
@@ -11,6 +13,7 @@ import 'package:kaboo_app/screens/main_screens/home/sub_screens/finds_job_screen
 import 'package:kaboo_app/screens/main_screens/home/sub_screens/your_network_screen.dart';
 import 'package:kaboo_app/utils/app_colors.dart';
 import 'package:kaboo_app/utils/util_functions.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,8 +34,55 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
-            children: const [
-              HeaderSection(),
+            children: [
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 51,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CustomIcon(iconName: "profile.png"),
+                          SizedBox(width: 4),
+                          Consumer<userProvider>(
+                            builder: (context, value, child) {
+                              return Column(
+                                children: [
+                                  CustomText(
+                                    text: "Hello,${value.userModel.fname}",
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                          // CustomText(
+                          //   text:,
+                          //   fontSize: 16,
+                          //   fontWeight: FontWeight.w500,
+                          // ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 60,
+                        width: 60,
+                        child: CustomIcon(iconName: "logo.png"),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 2),
+                  const CustomText(
+                    text: "Pick an action:",
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  const SizedBox(height: 15),
+                ],
+              ),
               TileList(),
             ],
           ),
@@ -119,51 +169,6 @@ class _TileListState extends State<TileList> {
           color1: kgradiantTileRed1,
           color2: Colors.white,
         ),
-      ],
-    );
-  }
-}
-
-class HeaderSection extends StatelessWidget {
-  const HeaderSection({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 51,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: const [
-                CustomIcon(iconName: "profile.png"),
-                SizedBox(width: 4),
-                CustomText(
-                  text: "Hello, Christian",
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 60,
-              width: 60,
-              child: CustomIcon(iconName: "logo.png"),
-            ),
-          ],
-        ),
-        const SizedBox(width: 2),
-        const CustomText(
-          text: "Pick an action:",
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-        ),
-        const SizedBox(height: 15),
       ],
     );
   }
