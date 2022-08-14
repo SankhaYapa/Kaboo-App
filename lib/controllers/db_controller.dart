@@ -41,14 +41,21 @@ class DatabaseController {
   }
 
   // update user user details
-  Future<void> updateUser(UserModel user) async {
-    return users
-        .doc(user.uid)
-        .set(
-          user.toJson(),
-        )
-        .then((value) => print("user update sussessful!"))
-        .catchError((error) => print("Failed to update: $error"));
+  Future<void> updateUser(
+    String uid,
+    String fname,
+    String lname,
+    String email,
+    String occupation,
+    String status,
+  ) async {
+    await users.doc(uid).set({
+      'fname': fname,
+      'lname': lname,
+      'email': email,
+      'occupation': occupation,
+      'status': status,
+    });
   }
 
   //getUser data

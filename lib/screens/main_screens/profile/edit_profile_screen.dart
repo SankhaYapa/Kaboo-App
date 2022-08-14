@@ -122,7 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       CustomSignButton(
                           onclick: () {
                             Provider.of<userProvider>(context, listen: false)
-                                .logout(context);
+                                .updateUser(context);
                           },
                           name: 'Confirm')
                     ],

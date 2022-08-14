@@ -83,4 +83,16 @@ class userProvider extends ChangeNotifier {
     await FirebaseAuth.instance.signOut();
     UtilFunctions.navigator(context, SignInPage());
   }
+
+  Future<void> updateUser(BuildContext context) async {
+    try {
+      _databaseController.updateUser(
+          _userModel.uid,
+          _fNameController.text,
+          _lNameController.text,
+          _emailController.text,
+          _occupationController.text,
+          _statusController.text);
+    } catch (e) {}
+  }
 }
