@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 5), () {
-      Provider.of<userProvider>(context, listen: false)
+      Provider.of<UserProvider>(context, listen: false)
           .initializerUser(context);
       //  UtilFunctions.navigator(context, SignInPage());
     });

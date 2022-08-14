@@ -12,7 +12,7 @@ import 'package:logger/logger.dart';
 import '../controllers/db_controller.dart';
 import '../screens/main_screens/main_screen.dart';
 
-class userProvider extends ChangeNotifier {
+class UserProvider extends ChangeNotifier {
   final DatabaseController _databaseController = DatabaseController();
 
   final _fNameController = TextEditingController();

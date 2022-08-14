@@ -30,7 +30,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: SingleChildScrollView(child: Consumer<userProvider>(
+      body: SingleChildScrollView(child: Consumer<UserProvider>(
         builder: (context, value, child) {
           return Container(
             width: size.width,
@@ -121,7 +121,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       CustomSignButton(
                           onclick: () {
-                            Provider.of<userProvider>(context, listen: false)
+                            Provider.of<UserProvider>(context, listen: false)
                                 .logout(context);
                           },
                           name: 'Confirm')

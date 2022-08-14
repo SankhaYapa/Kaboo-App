@@ -15,6 +15,13 @@ class ContactProvider extends ChangeNotifier {
   TextEditingController get messageController => _messageController;
   String get country => _country;
 
+  void clear() {
+    _nameController.clear();
+    _emailController.clear();
+    _messageController.clear();
+    _country = "";
+  }
+
   void setCountry(String c) {
     _country = c;
   }
@@ -24,6 +31,7 @@ class ContactProvider extends ChangeNotifier {
     if (inputValidation()) {
       isSend = true;
       sendEmail();
+      clear();
     }
     return isSend;
   }
