@@ -25,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        body: Consumer<userProvider>(
+        body: Consumer<UserProvider>(
           builder: (context, value, child) {
             return Container(
               width: size.width,
@@ -47,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
-                        Consumer<userProvider>(
+                        Consumer<UserProvider>(
                           builder: (context, value, child) {
                             return Column(
                               children: [
