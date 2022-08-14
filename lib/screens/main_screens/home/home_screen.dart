@@ -52,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               return Column(
                                 children: [
                                   CustomText(
-                                    text: 'xxxx',
-                                    //text: "Hello,${value.userModel.fname}",
+                                    //text: 'xxxx',
+                                    text: "Hello,${value.userModel.fname}",
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),

@@ -36,7 +36,7 @@ class DatabaseController {
             'status': status,
             'goal': goal,
             'uid': uid,
-            //'img': null
+            'img': null
           },
           SetOptions(merge: true),
         )

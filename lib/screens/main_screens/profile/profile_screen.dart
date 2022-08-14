@@ -52,8 +52,8 @@ class ProfileScreen extends StatelessWidget {
                             return Column(
                               children: [
                                 CustomText(
-                                  text: 'xxx',
-                                  //  text: "Hello,${value.userModel.fname}",
+                                  //text: 'xxx',
+                                  text: "Hello,${value.userModel.fname}",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),

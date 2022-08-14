@@ -39,22 +39,44 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  child: value.getImg.path != ''
-                      ? Image.file(
-                          value.getImg,
-                        )
-                      : IconButton(
+                Stack(
+                  children: [
+                    ClipOval(
+                      // alignment: Alignment.bottomCenter,
+                      child: Column(
+                        children: [
+                          value.getImg.path != ''
+                              ? Image.file(
+                                  value.getImg,
+                                  fit: BoxFit.cover,
+                                  width: 159,
+                                  height: 159,
+                                )
+                              : Container(
+                                  height: 159,
+                                  width: 159,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100))),
+                                ),
+                        ],
+                      ),
+                      // height: 159,
+                      // width: 159,
+                      // decoration: BoxDecoration(
+                      //     color: Colors.grey,
+                      //     borderRadius: BorderRadius.all(Radius.circular(100))),
+                    ),
+                    Positioned(
+                      bottom: 5,
+                      child: IconButton(
                           onPressed: () {
                             value.selectImage();
                           },
                           icon: Icon(Icons.camera_alt)),
-                  height: 159,
-                  width: 159,
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(100))),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 20,
@@ -70,8 +92,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       TextFieldWidget(
                         controller: value.fNameController,
-                        text: 'xxx',
-                        //text: value.userModel.fname,
+                        //text: 'xxx',
+                        text: value.userModel.fname,
                       ),
                       SizedBox(
                         height: 15,
