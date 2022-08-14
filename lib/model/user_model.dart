@@ -6,6 +6,7 @@ class UserModel {
   late String occupation;
   late String status;
   late String goal;
+  String? img;
 
   UserModel({
     required this.uid,
@@ -15,6 +16,7 @@ class UserModel {
     required this.occupation,
     required this.status,
     required this.goal,
+    this.img,
   });
 
   UserModel.fromMap(Map map) {
@@ -25,6 +27,7 @@ class UserModel {
     occupation = map['occupation'];
     status = map['status'];
     goal = map['goal'];
+    img = map['img'];
   }
 
   Map toJson() => {

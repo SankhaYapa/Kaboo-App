@@ -70,7 +70,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       TextFieldWidget(
                         controller: value.fNameController,
-                        text: value.userModel.fname,
+                        text: 'xxx',
+                        //text: value.userModel.fname,
                       ),
                       SizedBox(
                         height: 15,
@@ -121,8 +122,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       CustomSignButton(
                           onclick: () {
-                            Provider.of<UserProvider>(context, listen: false)
-                                .logout(context);
+
+                            Provider.of<userProvider>(context, listen: false)
+                                .updateUser(context);
+
                           },
                           name: 'Confirm')
                     ],
