@@ -8,7 +8,9 @@ import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_image.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
+import 'package:kaboo_app/screens/main_screens/home/chat_screen.dart';
 import 'package:kaboo_app/utils/gloable_data.dart';
+import 'package:kaboo_app/utils/util_functions.dart';
 import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -47,7 +49,9 @@ class _YourNetWorkScreenState extends State<YourNetWorkScreen> {
               text: 'Bookmarks',
             ),
             YourNetWorkList(
-              onTap: () {},
+              onTap: () {
+                UtilFunctions.navigator(context, ChatScreen());
+              },
               size: size,
               icon: "chat.png",
               text: 'Chat',
