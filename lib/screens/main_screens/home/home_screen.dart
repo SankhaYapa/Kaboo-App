@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           CustomIcon(iconName: "profile.png"),
                           SizedBox(width: 4),
-                          Consumer<userProvider>(
+                          Consumer<UserProvider>(
                             builder: (context, value, child) {
                               return Column(
                                 children: [
