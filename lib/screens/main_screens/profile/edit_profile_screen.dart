@@ -70,7 +70,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                       TextFieldWidget(
                         controller: value.fNameController,
-                        text: value.userModel.fname,
+                        text: 'xxx',
+                        //text: value.userModel.fname,
                       ),
                       SizedBox(
                         height: 15,

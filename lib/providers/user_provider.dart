@@ -92,7 +92,9 @@ class userProvider extends ChangeNotifier {
           _lNameController.text,
           _emailController.text,
           _occupationController.text,
-          _statusController.text);
+          _statusController.text,
+          _image);
+      notifyListeners();
     } catch (e) {}
   }
 }

@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:kaboo_app/model/user_model.dart';
 import 'package:logger/logger.dart';
+import 'package:path/path.dart';
 
 class DatabaseController {
   //fireStore instance ctrate
@@ -32,6 +36,7 @@ class DatabaseController {
             'status': status,
             'goal': goal,
             'uid': uid,
+            'img': null
           },
           SetOptions(merge: true),
         )
@@ -48,14 +53,36 @@ class DatabaseController {
     String email,
     String occupation,
     String status,
+    File img,
   ) async {
+    //upload the image task
+
+    UploadTask? task = uploadFile(img);
+    final snapshot = await task!.whenComplete(() {});
+    final downloadUrl = await snapshot.ref.getDownloadURL();
+    Logger().i(downloadUrl);
+
     await users.doc(uid).set({
       'fname': fname,
       'lname': lname,
       'email': email,
       'occupation': occupation,
       'status': status,
+      'img': img
     });
+  }
+
+//upload image to the DB
+  UploadTask? uploadFile(File file) {
+    try {
+      final fileName = basename(file.path);
+      final destination = 'productImages/$fileName';
+      final ref = FirebaseStorage.instance.ref(destination);
+      return ref.putFile(file);
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
   }
 
   //getUser data

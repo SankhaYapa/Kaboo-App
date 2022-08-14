@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_image.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
+import 'package:kaboo_app/utils/gloable_data.dart';
+import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class YourNetWorkScreen extends StatefulWidget {
@@ -56,7 +61,24 @@ class _YourNetWorkScreenState extends State<YourNetWorkScreen> {
               text: 'Call',
             ),
             YourNetWorkList(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PlacePicker(
+                      apiKey: GlobalData.API_KEY,
+                      onPlacePicked: (result) {
+                        print(result.formattedAddress);
+                        Navigator.of(context).pop();
+                      },
+                      initialPosition: LatLng(7.8731, 80.7718),
+                      useCurrentLocation: true,
+                      resizeToAvoidBottomInset:
+                          false, // remove this line, if map offsets are wrong
+                    ),
+                  ),
+                );
+              },
               size: size,
               icon: "map.png",
               text: 'Your Map',
