@@ -4,7 +4,7 @@
         android:label="kaboo_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCa-Y63qjt3I2XcSItrizLrVXsGulUF7Hg"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCB6eeP8aOO8fW8qgYnVn_bZFHDY6bf0TE"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

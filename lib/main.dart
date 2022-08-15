@@ -5,7 +5,6 @@ import 'package:kaboo_app/providers/contact_provider.dart';
 import 'package:kaboo_app/providers/login_provider.dart';
 import 'package:kaboo_app/providers/registration_provider.dart';
 import 'package:kaboo_app/providers/user_provider.dart';
-
 import 'package:kaboo_app/screens/main_screens/home/home_screen.dart';
 import 'package:kaboo_app/screens/main_screens/main_screen.dart';
 import 'package:kaboo_app/screens/splash_screen.dart';

@@ -10,6 +10,7 @@ import 'package:kaboo_app/utils/util_functions.dart';
 class AuthController {
   //firebase auth instance created
   FirebaseAuth auth = FirebaseAuth.instance;
+  late UserCredential userCredential2;
 
   //user registration function
   Future<void> registrationUser(
@@ -41,6 +42,7 @@ class AuthController {
         );
         print("object1");
       }
+      userCredential2 = userCredential;
 
       CustomAwesomDialog().dialogBox(
           context,
@@ -48,7 +50,7 @@ class AuthController {
           "Congratulations...! User Account created Now you can Login.",
           DialogType.SUCCES);
 
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(Duration(seconds: 5), () {
         UtilFunctions.pushRemoveNavigator(context, const MainScreen());
       });
     } on FirebaseAuthException catch (e) {

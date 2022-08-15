@@ -36,7 +36,17 @@ class ProfileScreen extends StatelessWidget {
                     height: 10,
                   ),
                   Container(
-                    child: Icon(Icons.camera_alt),
+                    child: (Provider.of<UserProvider>(context, listen: false)
+                                .userModel
+                                .img ==
+                            "")
+                        ? Image.network(
+                            Provider.of<UserProvider>(context, listen: false)
+                                .userModel
+                                .img
+                                .toString(),
+                          )
+                        : Icon(Icons.camera_alt),
                     height: 159,
                     width: 159,
                     decoration: BoxDecoration(
