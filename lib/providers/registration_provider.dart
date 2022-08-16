@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:kaboo_app/compononets/custom_dialog.dart';
 import 'package:kaboo_app/controllers/auth_controller.dart';
+import 'package:kaboo_app/providers/user_provider.dart';
 import 'package:logger/logger.dart';
 
 class RegistrationProvider extends ChangeNotifier {
@@ -70,16 +71,19 @@ class RegistrationProvider extends ChangeNotifier {
       setLording(true);
 
       if (inputValidation()) {
-        await AuthController().registrationUser(
-          context,
-          _emailController.text,
-          _passwordController.text,
-          _fNameController.text,
-          _lNameController.text,
-          _occupationController.text,
-          _status,
-          _goal,
-        );
+        await AuthController()
+            .registrationUser(
+              context,
+              _emailController.text,
+              _passwordController.text,
+              _fNameController.text,
+              _lNameController.text,
+              _occupationController.text,
+              _status,
+              _goal,
+            )
+            .whenComplete(() => UserProvider().fetchSingleUser(
+                AuthController().userCredential2.user!.uid.toString()));
       } else {
         CustomAwesomDialog().dialogBox(
           context,

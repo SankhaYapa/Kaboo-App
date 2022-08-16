@@ -48,17 +48,19 @@ class UserProvider extends ChangeNotifier {
         UtilFunctions.navigator(context, SignInPage());
       } else {
         Logger().w('User is signed in');
-        UtilFunctions.navigator(context, MainScreen());
+        print(user.email);
+        print(user.uid);
 
         await fetchSingleUser(user.uid);
-        userName = _userModel.fname;
-        Logger().i(userName);
+        UtilFunctions.navigator(context, MainScreen());
+        Logger().i(_userModel.fname);
       }
     });
   }
 
   Future<void> fetchSingleUser(String id) async {
     _userModel = (await _databaseController.getUserData(id))!;
+
     notifyListeners();
   }
 
@@ -93,6 +95,7 @@ class UserProvider extends ChangeNotifier {
           _emailController.text,
           _occupationController.text,
           _statusController.text,
+          _userModel.goal,
           _image);
       notifyListeners();
     } catch (e) {}

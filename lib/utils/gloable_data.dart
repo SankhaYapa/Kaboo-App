@@ -1,3 +1,3 @@
 class GlobalData {
-  static const API_KEY = "AIzaSyCa-Y63qjt3I2XcSItrizLrVXsGulUF7Hg";
+  static const API_KEY = "AIzaSyCB6eeP8aOO8fW8qgYnVn_bZFHDY6bf0TE";
 }

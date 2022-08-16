@@ -31,7 +31,6 @@ class DatabaseController {
             'fname': fname,
             'lname': fname,
             'email': email,
-            'password': password,
             'occupation': occution,
             'status': status,
             'goal': goal,
@@ -53,6 +52,7 @@ class DatabaseController {
     String email,
     String occupation,
     String status,
+    String goal,
     File img,
   ) async {
     //upload the image task
@@ -62,14 +62,20 @@ class DatabaseController {
     final downloadUrl = await snapshot.ref.getDownloadURL();
     Logger().i(downloadUrl);
 
-    await users.doc(uid).set({
-      'fname': fname,
-      'lname': lname,
-      'email': email,
-      'occupation': occupation,
-      'status': status,
-      'img': img
-    });
+    await users
+        .doc(uid)
+        .set({
+          'uid': uid,
+          'fname': fname,
+          'lname': lname,
+          'email': email,
+          'goal': goal,
+          'occupation': occupation,
+          'status': status,
+          'img': downloadUrl
+        })
+        .then((value) => print("user update sussessful!"))
+        .catchError((error) => print("Failed to update: $error"));
   }
 
 //upload image to the DB
@@ -93,8 +99,11 @@ class DatabaseController {
 
       // UserModel userModel =
       //     UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
+      print("object6");
       UserModel userModel =
           UserModel.fromMap(snapshot.data() as Map<String, dynamic>);
+
+      print("object7");
       //Logger().d(userModel.toString());
       return userModel;
     } catch (e) {
