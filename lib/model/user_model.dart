@@ -6,7 +6,7 @@ class UserModel {
   late String occupation;
   late String status;
   late String goal;
-  String? img;
+  late String? img;
 
   UserModel({
     required this.uid,

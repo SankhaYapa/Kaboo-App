@@ -45,7 +45,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Row(
                         children: [
-                          CustomIcon(iconName: "profile.png"),
+                          (Provider.of<UserProvider>(context, listen: false)
+                                      .userModel
+                                      .img !=
+                                  null)
+                              ? ClipOval(
+                                  child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    child: Image.network(
+                                      fit: BoxFit.cover,
+                                      Provider.of<UserProvider>(context,
+                                              listen: false)
+                                          .userModel
+                                          .img
+                                          .toString(),
+                                    ),
+                                  ),
+                                )
+                              : CustomIcon(iconName: "profile.png"),
                           SizedBox(width: 4),
                           Consumer<UserProvider>(
                             builder: (context, value, child) {

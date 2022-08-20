@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:kaboo_app/model/user_model.dart';
+import 'package:kaboo_app/providers/user_provider.dart';
 import 'package:logger/logger.dart';
 import 'package:path/path.dart';
 
@@ -54,6 +55,7 @@ class DatabaseController {
     String status,
     String goal,
     File img,
+    UserModel model,
   ) async {
     //upload the image task
 
@@ -62,20 +64,19 @@ class DatabaseController {
     final downloadUrl = await snapshot.ref.getDownloadURL();
     Logger().i(downloadUrl);
 
-    await users
-        .doc(uid)
-        .set({
-          'uid': uid,
-          'fname': fname,
-          'lname': lname,
-          'email': email,
-          'goal': goal,
-          'occupation': occupation,
-          'status': status,
-          'img': downloadUrl
-        })
-        .then((value) => print("user update sussessful!"))
-        .catchError((error) => print("Failed to update: $error"));
+    await users.doc(uid).set({
+      'uid': uid,
+      'fname': fname,
+      'lname': lname,
+      'email': email,
+      'goal': goal,
+      'occupation': occupation,
+      'status': status,
+      'img': downloadUrl
+    }).then((value) {
+      print("user update sussessful!");
+      UserProvider().setImage(downloadUrl.toString(), model);
+    }).catchError((error) => print("Failed to update: $error"));
   }
 
 //upload image to the DB

@@ -7,8 +7,20 @@ import 'package:kaboo_app/screens/main_screens/profile/edit_profile_screen.dart'
 import 'package:kaboo_app/utils/util_functions.dart';
 import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    setState(() {});
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +47,26 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    child: (Provider.of<UserProvider>(context, listen: false)
-                                .userModel
-                                .img ==
-                            "")
-                        ? Image.network(
-                            Provider.of<UserProvider>(context, listen: false)
-                                .userModel
-                                .img
-                                .toString(),
-                          )
-                        : Icon(Icons.camera_alt),
-                    height: 159,
-                    width: 159,
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.all(Radius.circular(100))),
+                  ClipOval(
+                    child: Container(
+                      child: (Provider.of<UserProvider>(context, listen: false)
+                                  .userModel
+                                  .img !=
+                              null)
+                          ? Image.network(
+                              fit: BoxFit.cover,
+                              Provider.of<UserProvider>(context, listen: false)
+                                  .userModel
+                                  .img
+                                  .toString(),
+                            )
+                          : Icon(Icons.camera_alt),
+                      height: 159,
+                      width: 159,
+                      decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.all(Radius.circular(100))),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),

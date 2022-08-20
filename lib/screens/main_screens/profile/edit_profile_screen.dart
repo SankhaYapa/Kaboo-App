@@ -1,10 +1,14 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kaboo_app/compononets/custom_sign_buttom.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
 import 'package:kaboo_app/compononets/custom_text_field.dart';
 import 'package:kaboo_app/providers/user_provider.dart';
+import 'package:kaboo_app/screens/main_screens/profile/profile_screen.dart';
+import 'package:kaboo_app/utils/util_functions.dart';
 import 'package:provider/provider.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -15,6 +19,14 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<UserProvider>(context, listen: false).setControllers();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -45,22 +57,35 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       // alignment: Alignment.bottomCenter,
                       child: Column(
                         children: [
-                          //value.getImg.path != ''
-                          // ? Image.file(
-                          //     value.getImg,
-                          //     fit: BoxFit.cover,
-                          //     width: 159,
-                          //     height: 159,
-                          //   )
-                          // :
-                          Container(
-                            height: 159,
-                            width: 159,
-                            decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100))),
-                          ),
+                          value.getImg.path != ''
+                              ? Image.file(
+                                  value.getImg,
+                                  fit: BoxFit.cover,
+                                  width: 159,
+                                  height: 159,
+                                )
+                              : Container(
+                                  height: 159,
+                                  width: 159,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100))),
+                                  child: (Provider.of<UserProvider>(context,
+                                                  listen: false)
+                                              .userModel
+                                              .img !=
+                                          null)
+                                      ? (Image.network(
+                                          fit: BoxFit.fill,
+                                          Provider.of<UserProvider>(context,
+                                                  listen: false)
+                                              .userModel
+                                              .img
+                                              .toString(),
+                                        ))
+                                      : Icon(Icons.camera_alt),
+                                ),
                         ],
                       ),
                       // height: 159,
@@ -71,11 +96,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                     Positioned(
                       bottom: 5,
-                      child: IconButton(
-                          onPressed: () {
-                            value.selectImage();
-                          },
-                          icon: Icon(Icons.camera_alt)),
+                      child: Container(
+                        child: IconButton(
+                            onPressed: () {
+                              value.selectImage();
+                            },
+                            icon: Icon(Icons.camera_alt)),
+                      ),
                     ),
                   ],
                 ),
@@ -143,12 +170,25 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      CustomSignButton(
-                          onclick: () {
-                            Provider.of<UserProvider>(context, listen: false)
-                                .updateUser(context);
-                          },
-                          name: 'Confirm')
+                      (value.loding == true)
+                          ? SpinKitThreeInOut(
+                              color: Colors.blue,
+                              size: 50.0,
+                            )
+                          : CustomSignButton(
+                              onclick: () async {
+                                await Provider.of<UserProvider>(context,
+                                        listen: false)
+                                    .updateUser(context);
+                                Future.delayed(Duration(seconds: 7), () {
+                                  setState(() {});
+                                  UtilFunctions.navigator(
+                                      context, ProfileScreen());
+
+                                  //  UtilFunctions.navigator(context, SignInPage());
+                                });
+                              },
+                              name: 'Confirm')
                     ],
                   ),
                 )
