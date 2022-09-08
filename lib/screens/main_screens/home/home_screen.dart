@@ -63,7 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                 )
-                              : CustomIcon(iconName: "profile.png"),
+                              : Icon(Icons.account_circle),
+                          // : CustomIcon(iconName: "profile.png"),
                           SizedBox(width: 4),
                           Consumer<UserProvider>(
                             builder: (context, value, child) {

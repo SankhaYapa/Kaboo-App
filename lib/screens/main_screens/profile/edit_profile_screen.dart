@@ -7,6 +7,7 @@ import 'package:kaboo_app/compononets/custom_sign_buttom.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
 import 'package:kaboo_app/compononets/custom_text_field.dart';
 import 'package:kaboo_app/providers/user_provider.dart';
+import 'package:kaboo_app/screens/main_screens/main_screen.dart';
 import 'package:kaboo_app/screens/main_screens/profile/profile_screen.dart';
 import 'package:kaboo_app/utils/util_functions.dart';
 import 'package:provider/provider.dart';
@@ -182,8 +183,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     .updateUser(context);
                                 Future.delayed(Duration(seconds: 7), () {
                                   setState(() {});
+                                  // UtilFunctions.navigator(
+                                  //     context, ProfileScreen());
                                   UtilFunctions.navigator(
-                                      context, ProfileScreen());
+                                      context,
+                                      MainScreen(
+                                        currentIndex: 3,
+                                      ));
 
                                   //  UtilFunctions.navigator(context, SignInPage());
                                 });
