@@ -5,7 +5,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_image.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
+<<<<<<< HEAD
 import 'package:kaboo_app/screens/example.dart';
+=======
+>>>>>>> 076f9fa2d7e023372764c4fa7b1430d8e6e20c3e
 import 'package:kaboo_app/utils/util_functions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -63,6 +66,7 @@ class _AccomandationScreenState extends State<AccomandationScreen> {
               size: size,
               icon: "airbnb.png",
               text: 'Open Airbnb ',
+<<<<<<< HEAD
               onTap: _launchUrl1),
           AccomandationList(
               size: size,
@@ -75,16 +79,50 @@ class _AccomandationScreenState extends State<AccomandationScreen> {
               text: 'Explore on Facebook \n marketplace ',
               onTap: _launchUrl3),
         ]));
+=======
+              onTap: () {
+                final url =
+                    'https://www.airbnb.ca/KIJIJI : https://www.kijiji.ca/b-for-rent/canada/c30349001l0';
+              },
+            ),
+            AccomandationList(
+              size: size,
+              icon: "kijiji.png",
+              text: 'Explore on Kijiji ',
+              onTap: () {
+                final url =
+                    'https://www.airbnb.ca/KIJIJI : https://www.kijiji.ca/b-for-rent/canada/c30349001l0';
+              },
+            ),
+            AccomandationList(
+              size: size,
+              icon: "facebook.png",
+              text: 'Explore on Facebook \n marketplace ',
+              onTap: () {
+                final url =
+                    'https://www.airbnb.ca/KIJIJI : https://www.kijiji.ca/b-for-rent/canada/c30349001l0';
+              },
+            )
+          ],
+        ));
+>>>>>>> 076f9fa2d7e023372764c4fa7b1430d8e6e20c3e
   }
 }
 
 class AccomandationList extends StatelessWidget {
+<<<<<<< HEAD
   AccomandationList(
+=======
+  const AccomandationList(
+>>>>>>> 076f9fa2d7e023372764c4fa7b1430d8e6e20c3e
       {Key? key,
       required this.size,
       required this.icon,
       required this.text,
+<<<<<<< HEAD
       // required this.url
+=======
+>>>>>>> 076f9fa2d7e023372764c4fa7b1430d8e6e20c3e
       required this.onTap})
       : super(key: key);
 

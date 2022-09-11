@@ -8,15 +8,21 @@ import 'package:kaboo_app/screens/main_screens/map/map_screem.dart';
 import 'package:kaboo_app/screens/main_screens/profile/profile_screen.dart';
 import 'package:kaboo_app/utils/app_colors.dart';
 
+// ignore: must_be_immutable
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  MainScreen({
+    Key? key,
+    this.currentIndex = 0,
+  }) : super(key: key);
+
+  int currentIndex;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+  //int _currentIndex = 0;
   final List<Widget> _screens = [
     const HomeScreen(),
     const CalenderScreen(),
@@ -76,7 +82,7 @@ class _MainScreenState extends State<MainScreen> {
     return WillPopScope(
       onWillPop: initBackButton,
       child: Scaffold(
-        body: _screens.elementAt(_currentIndex),
+        body: _screens.elementAt(widget.currentIndex),
         bottomNavigationBar: Container(
           height: 70,
           color: Colors.white,
@@ -92,40 +98,40 @@ class _MainScreenState extends State<MainScreen> {
                   BottomNavTile(
                     text: "Home",
                     icon: "Home.svg",
-                    isSelected: _currentIndex == 0,
+                    isSelected: widget.currentIndex == 0,
                     ontap: () {
                       setState(() {
-                        _currentIndex = 0;
+                        widget.currentIndex = 0;
                       });
                     },
                   ),
                   BottomNavTile(
                     text: "Calender",
                     icon: "calender.svg",
-                    isSelected: _currentIndex == 1,
+                    isSelected: widget.currentIndex == 1,
                     ontap: () {
                       setState(() {
-                        _currentIndex = 1;
+                        widget.currentIndex = 1;
                       });
                     },
                   ),
                   BottomNavTile(
                     text: "Map",
                     icon: "map.svg",
-                    isSelected: _currentIndex == 2,
+                    isSelected: widget.currentIndex == 2,
                     ontap: () {
                       setState(() {
-                        _currentIndex = 2;
+                        widget.currentIndex = 2;
                       });
                     },
                   ),
                   BottomNavTile(
                     text: "Profile",
                     icon: "profile.svg",
-                    isSelected: _currentIndex == 3,
+                    isSelected: widget.currentIndex == 3,
                     ontap: () {
                       setState(() {
-                        _currentIndex = 3;
+                        widget.currentIndex = 3;
                       });
                     },
                   ),

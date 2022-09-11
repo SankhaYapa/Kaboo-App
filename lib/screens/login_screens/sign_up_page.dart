@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_login_topic.dart';
 import 'package:kaboo_app/compononets/custom_sign_buttom.dart';
@@ -44,11 +45,16 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 20),
                 MiddleSection(),
                 const SizedBox(height: 34),
-                CustomSignButton(
-                    name: "Sign-up",
-                    onclick: () {
-                      value.srartRegister(context);
-                    }),
+                (value.isLording == true)
+                    ? SpinKitThreeInOut(
+                        color: Colors.blue,
+                        size: 50.0,
+                      )
+                    : CustomSignButton(
+                        name: "Sign-up",
+                        onclick: () {
+                          value.srartRegister(context);
+                        }),
                 const SizedBox(height: 25),
                 CustomTextAndLink(
                   onTab: () =>

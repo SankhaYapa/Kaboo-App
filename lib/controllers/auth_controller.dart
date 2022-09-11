@@ -44,15 +44,15 @@ class AuthController {
       }
       userCredential2 = userCredential;
 
-      CustomAwesomDialog().dialogBox(
-          context,
-          "Success...!",
-          "Congratulations...! User Account created Now you can Login.",
-          DialogType.SUCCES);
+      // CustomAwesomDialog().dialogBox(
+      //     context,
+      //     "Success...!",
+      //     "Congratulations...! User Account created Now you can Login.",
+      //     DialogType.SUCCES);
 
-      Future.delayed(Duration(seconds: 5), () {
-        UtilFunctions.pushRemoveNavigator(context, const MainScreen());
-      });
+      // Future.delayed(Duration(seconds: 5), () {
+      //   UtilFunctions.pushRemoveNavigator(context, MainScreen());
+      // });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         CustomAwesomDialog().dialogBox(
