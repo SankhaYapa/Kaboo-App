@@ -22,6 +22,15 @@ class YourNetWorkScreen extends StatefulWidget {
 }
 
 class _YourNetWorkScreenState extends State<YourNetWorkScreen> {
+  String phoneNumber = '9470191877';
+  final Uri _url =
+      Uri.parse('https://wa.me/9470191877?text=How Can I Help You');
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw 'Could not launch $_url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -49,9 +58,7 @@ class _YourNetWorkScreenState extends State<YourNetWorkScreen> {
               text: 'Bookmarks',
             ),
             YourNetWorkList(
-              onTap: () {
-                UtilFunctions.navigator(context, ChatScreen());
-              },
+              onTap: _launchUrl,
               size: size,
               icon: "chat.png",
               text: 'Chat',

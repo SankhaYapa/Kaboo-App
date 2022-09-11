@@ -5,45 +5,20 @@ import 'package:kaboo_app/compononets/custom_gradint_tile.dart';
 import 'package:kaboo_app/compononets/custom_icon.dart';
 import 'package:kaboo_app/compononets/custom_image.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/journey_sub_screen/cell_phone_category.dart/l1flankers.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/journey_sub_screen/cell_phone_category.dart/l2flankers.dart';
+import 'package:kaboo_app/screens/main_screens/home/sub_screens/journey_sub_screen/cell_phone_category.dart/majors.dart';
+import 'package:kaboo_app/utils/util_functions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class FindsJobScreen extends StatefulWidget {
-  const FindsJobScreen({Key? key}) : super(key: key);
+class CellPhonePlan extends StatefulWidget {
+  const CellPhonePlan({Key? key}) : super(key: key);
 
   @override
-  State<FindsJobScreen> createState() => _FindsJobScreenState();
+  State<CellPhonePlan> createState() => _CellPhonePlanState();
 }
 
-class _FindsJobScreenState extends State<FindsJobScreen> {
-  final Uri _url1 = Uri.parse(
-      'https://www.linkedin.com/jobs/search/?currentJobId=3223797550&geoId=&keywords=&location=canada');
-  Future<void> _launchUrl1() async {
-    if (!await launchUrl(_url1)) {
-      throw 'Could not launch $_url1';
-    }
-  }
-
-  final Uri _url2 = Uri.parse('https://ca.indeed.com/');
-  Future<void> _launchUrl2() async {
-    if (!await launchUrl(_url2)) {
-      throw 'Could not launch $_url2';
-    }
-  }
-
-  final Uri _url3 = Uri.parse('https://www.careerbeacon.com/');
-  Future<void> _launchUrl3() async {
-    if (!await launchUrl(_url3)) {
-      throw 'Could not launch $_url3';
-    }
-  }
-
-  final Uri _url4 = Uri.parse('https://www.jobbank.gc.ca/home');
-  Future<void> _launchUrl4() async {
-    if (!await launchUrl(_url4)) {
-      throw 'Could not launch $_url4';
-    }
-  }
-
+class _CellPhonePlanState extends State<CellPhonePlan> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -55,40 +30,43 @@ class _FindsJobScreenState extends State<FindsJobScreen> {
           ),
           centerTitle: true,
           title: Text(
-            'Find Jobs',
+            'Local Cellphone Category',
             style: TextStyle(color: Colors.black),
           ),
         ),
-        body: Column(children: [
-          CustomImage(
-            name: 'findjobs.png',
-          ),
-          CustomJobs(
-            size: size,
-            text: 'LinkedIn',
-            onTap: _launchUrl1,
-          ),
-          CustomJobs(
-            size: size,
-            text: 'Indeed',
-            onTap: _launchUrl2,
-          ),
-          CustomJobs(
-            size: size,
-            text: 'Career Beacon',
-            onTap: _launchUrl3,
-          ),
-          CustomJobs(
-            size: size,
-            text: 'Jobs Bank',
-            onTap: _launchUrl4,
-          ),
-        ]));
+        body: SingleChildScrollView(
+          child: Column(children: [
+            CustomImage(
+              name: 'findjobs.png',
+            ),
+            CustomProvince(
+              size: size,
+              text: 'Majors',
+              onTap: () {
+                UtilFunctions.navigator(context, Majors());
+              },
+            ),
+            CustomProvince(
+              size: size,
+              text: '1st Level Flankers',
+              onTap: () {
+                UtilFunctions.navigator(context, l1Flankers());
+              },
+            ),
+            CustomProvince(
+              size: size,
+              text: '2nd Level Flankers',
+              onTap: () {
+                UtilFunctions.navigator(context, l2Flankers());
+              },
+            ),
+          ]),
+        ));
   }
 }
 
-class CustomJobs extends StatelessWidget {
-  const CustomJobs(
+class CustomProvince extends StatelessWidget {
+  const CustomProvince(
       {Key? key, required this.size, required this.text, required this.onTap})
       : super(key: key);
 
@@ -112,7 +90,7 @@ class CustomJobs extends StatelessWidget {
                       end: Alignment.bottomRight,
                       colors: [
                         Color.fromARGB(255, 213, 209, 255),
-                        Color.fromARGB(255, 129, 133, 252)
+                        Color.fromARGB(255, 239, 239, 239)
                       ]),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),

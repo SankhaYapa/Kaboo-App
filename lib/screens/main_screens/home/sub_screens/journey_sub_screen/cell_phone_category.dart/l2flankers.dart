@@ -7,40 +7,32 @@ import 'package:kaboo_app/compononets/custom_image.dart';
 import 'package:kaboo_app/compononets/custom_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class FindsJobScreen extends StatefulWidget {
-  const FindsJobScreen({Key? key}) : super(key: key);
+class l2Flankers extends StatefulWidget {
+  const l2Flankers({Key? key}) : super(key: key);
 
   @override
-  State<FindsJobScreen> createState() => _FindsJobScreenState();
+  State<l2Flankers> createState() => _l2FlankersState();
 }
 
-class _FindsJobScreenState extends State<FindsJobScreen> {
-  final Uri _url1 = Uri.parse(
-      'https://www.linkedin.com/jobs/search/?currentJobId=3223797550&geoId=&keywords=&location=canada');
+class _l2FlankersState extends State<l2Flankers> {
+  final Uri _url1 = Uri.parse('https://www.luckymobile.ca/');
   Future<void> _launchUrl1() async {
     if (!await launchUrl(_url1)) {
       throw 'Could not launch $_url1';
     }
   }
 
-  final Uri _url2 = Uri.parse('https://ca.indeed.com/');
+  final Uri _url2 = Uri.parse('https://www.publicmobile.ca/en');
   Future<void> _launchUrl2() async {
     if (!await launchUrl(_url2)) {
       throw 'Could not launch $_url2';
     }
   }
 
-  final Uri _url3 = Uri.parse('https://www.careerbeacon.com/');
+  final Uri _url3 = Uri.parse('https://www.chatrwireless.com/');
   Future<void> _launchUrl3() async {
     if (!await launchUrl(_url3)) {
       throw 'Could not launch $_url3';
-    }
-  }
-
-  final Uri _url4 = Uri.parse('https://www.jobbank.gc.ca/home');
-  Future<void> _launchUrl4() async {
-    if (!await launchUrl(_url4)) {
-      throw 'Could not launch $_url4';
     }
   }
 
@@ -55,40 +47,37 @@ class _FindsJobScreenState extends State<FindsJobScreen> {
           ),
           centerTitle: true,
           title: Text(
-            'Find Jobs',
+            '2nd Level Flankers',
             style: TextStyle(color: Colors.black),
           ),
         ),
-        body: Column(children: [
-          CustomImage(
-            name: 'findjobs.png',
-          ),
-          CustomJobs(
-            size: size,
-            text: 'LinkedIn',
-            onTap: _launchUrl1,
-          ),
-          CustomJobs(
-            size: size,
-            text: 'Indeed',
-            onTap: _launchUrl2,
-          ),
-          CustomJobs(
-            size: size,
-            text: 'Career Beacon',
-            onTap: _launchUrl3,
-          ),
-          CustomJobs(
-            size: size,
-            text: 'Jobs Bank',
-            onTap: _launchUrl4,
-          ),
-        ]));
+        body: SingleChildScrollView(
+          child: Column(children: [
+            CustomImage(
+              name: 'findjobs.png',
+            ),
+            CustomProvince(
+              size: size,
+              text: 'Lucky Mobile',
+              onTap: _launchUrl1,
+            ),
+            CustomProvince(
+              size: size,
+              text: 'Public Mobile',
+              onTap: _launchUrl2,
+            ),
+            CustomProvince(
+              size: size,
+              text: 'Chatr Mobile',
+              onTap: _launchUrl3,
+            ),
+          ]),
+        ));
   }
 }
 
-class CustomJobs extends StatelessWidget {
-  const CustomJobs(
+class CustomProvince extends StatelessWidget {
+  const CustomProvince(
       {Key? key, required this.size, required this.text, required this.onTap})
       : super(key: key);
 
@@ -112,7 +101,7 @@ class CustomJobs extends StatelessWidget {
                       end: Alignment.bottomRight,
                       colors: [
                         Color.fromARGB(255, 213, 209, 255),
-                        Color.fromARGB(255, 129, 133, 252)
+                        Color.fromARGB(255, 239, 239, 239)
                       ]),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
