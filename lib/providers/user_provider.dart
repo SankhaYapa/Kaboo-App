@@ -40,6 +40,15 @@ class UserProvider extends ChangeNotifier {
 
   String userName = "User";
 
+  void setControllers() {
+    loding = false;
+    _fNameController.text = _userModel.fname;
+    _lNameController.text = _userModel.lname;
+    _emailController.text = _userModel.email;
+    _statusController.text = _userModel.status;
+    _occupationController.text = _userModel.occupation;
+  }
+
   //initialize user function
   Future<void> initializerUser(BuildContext context) async {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
@@ -86,18 +95,34 @@ class UserProvider extends ChangeNotifier {
     UtilFunctions.navigator(context, SignInPage());
   }
 
+  bool loding = false;
   Future<void> updateUser(BuildContext context) async {
+    loding = true;
     try {
       _databaseController.updateUser(
-          _userModel.uid,
-          _fNameController.text,
-          _lNameController.text,
-          _emailController.text,
-          _occupationController.text,
-          _statusController.text,
-          _userModel.goal,
-          _image);
+        _userModel.uid,
+        _fNameController.text,
+        _lNameController.text,
+        _emailController.text,
+        _occupationController.text,
+        _statusController.text,
+        _userModel.goal,
+        _image,
+        _userModel,
+      );
+
       notifyListeners();
     } catch (e) {}
+  }
+
+  void setImage(String a, UserModel model) {
+    model.img = a;
+    // model.fname = _fNameController.text;
+    // model.lname = _lNameController.text;
+    // model.email = _emailController.text;
+    // model.occupation = _occupationController.text;
+    // model.status = _statusController.text;
+    loding = false;
+    notifyListeners();
   }
 }
