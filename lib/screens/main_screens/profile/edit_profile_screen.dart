@@ -72,8 +72,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       color: Colors.grey,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(100))),
-<<<<<<< HEAD
-=======
                                   child: (Provider.of<UserProvider>(context,
                                                   listen: false)
                                               .userModel
@@ -88,7 +86,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               .toString(),
                                         ))
                                       : Icon(Icons.camera_alt),
->>>>>>> 076f9fa2d7e023372764c4fa7b1430d8e6e20c3e
                                 ),
                         ],
                       ),
